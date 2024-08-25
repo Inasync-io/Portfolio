@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className="footer">
         <div className="footer__container container">
-           <h1 className="footer__title">Rogith</h1>
+           <h1 className="footer__title">Rohit</h1>
 
            <ul className="footer__list">
                 <li>
@@ -17,7 +17,15 @@ const Footer = () => {
                 </li>
 
                 <li>
-                    <a href="#testimonials" className="footer__link">Testimonials</a>
+                    <a href="#skills" className="footer__link">Skills</a>
+                </li>
+
+                <li>
+                    <a href="#qualification" className="footer__link">Qualification</a>
+                </li>
+
+                <li>
+                    <a href="#contact" className="footer__link">Contact</a>
                 </li>
            </ul>
 
@@ -26,16 +34,16 @@ const Footer = () => {
             <i class = "uil uil-facebook"></i>
             </a>
 
-            <a href="https://www.instagram.com/" className="footer__social-link" target='_blank'>
+            <a href="https://www.instagram.com/synxhub" className="footer__social-link" target='_blank'>
             <i class = "uil uil-instagram"></i>
             </a>
 
-            <a href="https://www.twitter.com/" className="footer__social-link" target='_blank'>
-            <i class = "uil uil-twitter-alt"></i>
+            <a href="https://www.linkedin.com/in/nrogith" className="footer__social-link" target='_blank'>
+            <i class = "uil uil-linkedin"></i>
             </a>
            </div>
 
-           <span className="footer__copy">&#169; HustlrDen. All rights reserved</span>
+           <span className="footer__copy">&#169; SyncHub. All rights reserved</span>
         </div>
     </footer>
   )
