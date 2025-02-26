@@ -4,7 +4,7 @@ const Data = () => {
   return (
     <div className="home__data">
       <h1 className="home__title">
-        Shanks
+        Ace
         <svg
           width="36"
           height="36"
@@ -55,10 +55,10 @@ const Data = () => {
           ></path>
         </svg>
       </h1>
-      <h3 className="home__subtitle">Visual Designer</h3>
+      {/* <h3 className="home__subtitle">Visual Designer</h3> */}
+      <h3 className="home__subtitle">MERN Developer</h3>
       <p className="home__description">
-        I'm a creative designer based in Chennai, and I'm very passionate and
-        dedicated to my work."
+      I'm a MERN Stack Developer and UI/UX Designer based in Chennai, passionate about building intuitive and visually appealing digital experiences.
       </p>
 
       <a href="#contact" className="button button--flex">
