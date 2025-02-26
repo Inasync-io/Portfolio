@@ -17,9 +17,11 @@ function About() {
           <Info />
 
           <p className="about__description">
-            Frontend developer, I create web pages with UI / UX user interface.
-            As a fresher, I'm passionate about delivering quality projects. I'm
-            eager to learn and grow in the field.
+            I'm a MERN full-stack developer dedicated to building intuitive and
+            engaging web applications. As a fresher, I'm passionate about
+            delivering high-quality projects with a strong emphasis on UI/UX
+            design. I'm constantly eager to learn new technologies and grow in
+            the field.
           </p>
 
           <a download="" href={CV} className="button button--flex">

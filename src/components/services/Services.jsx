@@ -31,7 +31,7 @@ const Services = () => {
 
               <h3 className="services__model-title">Product Designer</h3>
               <p className="services__model-description">
-                Service with more than 3 years of experience.Providing quality
+                Service with more than 1 years of experience.Providing quality
                 work to clients and companies.
               </p>
 
@@ -68,7 +68,7 @@ const Services = () => {
         <div className="services__content">
           <div>
             <i className="uil uil-arrow services__icon"></i>
-            <h3 className="services__title">Ui/Ux <br /> Designer</h3>
+            <h3 className="services__title">Web <br /> Developer</h3>
           </div>
 
           <span className="services__button" onClick={() => toggleTab(2)}>
@@ -82,7 +82,7 @@ const Services = () => {
 
               <h3 className="services__model-title">Ui/Ux Designer</h3>
               <p className="services__model-description">
-                Service with more than 3 years of experience.Providing quality
+                Service with more than 1 years of experience.Providing quality
                 work to clients and companies.
               </p>
 
@@ -133,7 +133,7 @@ const Services = () => {
 
               <h3 className="services__model-title">Visual Designer</h3>
               <p className="services__model-description">
-                Service with more than 3 years of experience.Providing quality
+                Service with more than 1 years of experience.Providing quality
                 work to clients and companies.
               </p>
 

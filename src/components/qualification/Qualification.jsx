@@ -153,7 +153,7 @@ const Qualification = () => {
               </div>
 
               <div>
-                <h3 className="qualification__title">UX Designer</h3>
+                <h3 className="qualification__title">UI Designer</h3>
                 <span className="qualification__subtitle">
                   FeOs - Chennai.
                 </span>

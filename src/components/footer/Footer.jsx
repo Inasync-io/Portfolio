@@ -30,20 +30,24 @@ const Footer = () => {
            </ul>
 
            <div className="footer__social">
-           <a href="https://www.facebook.com/" className="footer__social-link" target='_blank'>
-            <i class = "uil uil-facebook"></i>
-            </a>
-
-            <a href="https://www.instagram.com/synxhub" className="footer__social-link" target='_blank'>
+            <a href="https://www.instagram.com/inasync_" className="footer__social-link" target='_blank'>
             <i class = "uil uil-instagram"></i>
             </a>
 
-            <a href="https://www.linkedin.com/in/nrogith" className="footer__social-link" target='_blank'>
+            <a href="https://www.linkedin.com/in/rohitna" className="footer__social-link" target='_blank'>
             <i class = "uil uil-linkedin"></i>
+            </a>
+
+            <a href="https://github.com/Inasync-io" className="footer__social-link" target='_blank'>
+            <i class = "uil uil-github-alt"></i>
+            </a>
+
+            <a href="https://www.behance.net/nrogith" className="footer__social-link" target='_blank'>
+            <i class = "uil uil-behance"></i>
             </a>
            </div>
 
-           <span className="footer__copy">&#169; SyncHub. All rights reserved</span>
+           <span className="footer__copy">&#169; Inasync. All rights reserved</span>
         </div>
     </footer>
   )

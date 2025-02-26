@@ -60,7 +60,7 @@ const Header = () => {
                 Skills
               </a>
             </li>
-            {/* <li className="nav__item">
+            <li className="nav__item">
               <a href="#services" onClick={() => setActiveNav("#services")}
                 className={
                   activeNav === "#services" ? "nav__link active-link" : "nav__link"
@@ -68,7 +68,7 @@ const Header = () => {
                 <i className="uil uil-briefcase-alt nav__icon"></i>
                 Services
               </a>
-            </li> */}
+            </li>
             <li className="nav__item">
               <a
                 href="#portfolio"
