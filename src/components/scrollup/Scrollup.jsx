@@ -10,9 +10,9 @@ const Scrollup = () => {
     else scrollup.classList.remove("show-scroll");
   });
   return (
-    <a href="#" className="scrollup">
+    <button type="button" className="scrollup" aria-label="Scroll to top">
       <i className="uil uil-arrow-up scrollup__icon"></i>
-    </a>
+    </button>
   );
 };
 
