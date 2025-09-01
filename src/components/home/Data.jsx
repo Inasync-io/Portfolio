@@ -57,7 +57,7 @@ const Data = () => {
       </h1>
       <h3 className="home__subtitle">MERN Stack Developer</h3>
       <p className="home__description">
-      I'm a MERN Stack Developer and UI/UX Designer based in Chennai, passionate about building intuitive and visually appealing digital experiences.
+      I’m a Full Stack Developer specializing in the MERN stack with 2 years of experience. I focus on building scalable, secure, and responsive web applications.
       </p>
 
       <a href="#contact" className="button button--flex">

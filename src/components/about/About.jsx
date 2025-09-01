@@ -17,11 +17,7 @@ function About() {
           <Info />
 
           <p className="about__description">
-            I'm a MERN full-stack developer dedicated to building intuitive and
-            engaging web applications. As a fresher, I'm passionate about
-            delivering high-quality projects with a strong emphasis on UI/UX
-            design. I'm constantly eager to learn new technologies and grow in
-            the field.
+            I’m a MERN Full Stack Developer dedicated to building intuitive and engaging web applications. With 2 years of experience, I’m passionate about delivering high-quality projects with a strong emphasis on UI/UX design. I’m constantly eager to learn new technologies and grow in the field.
           </p>
 
           <a download="" href={CV} className="button button--flex">
