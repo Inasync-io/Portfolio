@@ -31,7 +31,7 @@ const Services = () => {
 
               <h3 className="services__model-title">Web Development</h3>
               <p className="services__model-description">
-                Service with more than 2 years of experience in building full-stack applications using the MERN stack. Delivering secure, scalable, and high-performing solutions for businesses and clients.
+                Building scalable and responsive applications using the MERN stack, with secure APIs and optimized backend architecture for smooth performance.
               </p>
 
               <ul className="services__model-services grid">
@@ -81,7 +81,7 @@ const Services = () => {
 
               <h3 className="services__model-title">Frontend & UI Design</h3>
               <p className="services__model-description">
-                Focused on crafting clean, modern, and user-friendly interfaces that ensure smooth user experiences across devices.
+                Crafting clean, modern, and user-friendly interfaces using React.js and Tailwind CSS, ensuring accessibility and seamless experiences across devices.
               </p>
 
               <ul className="services__model-services grid">

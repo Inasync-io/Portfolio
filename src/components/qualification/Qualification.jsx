@@ -55,7 +55,7 @@ const Qualification = () => {
                   Accord - Chennai.
                 </span>
                 <div className="qualification__calender">
-                  <i className="uil uil-calendar-alt"></i> 2023
+                  <i className="uil uil-calendar-alt"></i> Feb - july 2023 
                 </div>
               </div>
 
@@ -158,7 +158,7 @@ const Qualification = () => {
                   FeOs - Chennai.
                 </span>
                 <div className="qualification__calender">
-                  <i className="uil uil-calendar-alt"></i>Oct 2023 - Present
+                  <i className="uil uil-calendar-alt"></i> Oct 2023 - Present
                 </div>
               </div>
             </div>
@@ -170,7 +170,7 @@ const Qualification = () => {
                   FeOs - Chennai.
                 </span>
                 <div className="qualification__calender">
-                  <i className="uil uil-calendar-alt"></i>Oct 2023 - Present
+                  <i className="uil uil-calendar-alt"></i> Oct 2023 - Present
                 </div>
               </div>
 
