@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className="footer" id='footer'>
         <div className="footer__container container">
-           <h1 className="footer__title">Rohit</h1>
+           <h1 className="footer__title">Ace</h1>
 
            <ul className="footer__list">
                 <li>
@@ -30,7 +30,7 @@ const Footer = () => {
            </ul>
 
            <div className="footer__social">
-            <a href="https://www.instagram.com/inasync_" className="footer__social-link" target='_blank' rel="noreferrer">
+            <a href="https://www.instagram.com/irohitna" className="footer__social-link" target='_blank' rel="noreferrer">
             <i class = "uil uil-instagram"></i>
             </a>
 
