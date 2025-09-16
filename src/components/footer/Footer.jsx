@@ -30,8 +30,8 @@ const Footer = () => {
            </ul>
 
            <div className="footer__social">
-            <a href="https://www.instagram.com/irohitna" className="footer__social-link" target='_blank' rel="noreferrer">
-            <i class = "uil uil-instagram"></i>
+            <a href="https://x.com/irohitna_" className="footer__social-link" target='_blank' rel="noreferrer">
+            <i class="uil uil-twitter"></i>
             </a>
 
             <a href="https://www.linkedin.com/in/rohitna" className="footer__social-link" target='_blank' rel="noreferrer">
