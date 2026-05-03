@@ -37,7 +37,7 @@
 
 // FormInput.jsx
 
-import React, { useState, useRef, useEffect } from "react"; 
+import React, { useState, useRef, useEffect } from "react";
 
 const FormInput = ({
   label,
@@ -46,21 +46,25 @@ const FormInput = ({
   placeholder,
   textarea = false,
   tabIndex,
+  error,
+  value,
+  onChange,
 
   // Dropdown Props
   dropdown = false,
-  options = [ 'Hire You (Full-Time)', 'Freelance Project', 'UI/UX Design Work', 'Collaboration', 'Other' ],
+  options = [
+    "Hire You (Full-Time)",
+    "Freelance Project",
+    "UI/UX Design Work",
+    "Collaboration",
+    "Other",
+  ],
   selectedOption,
   setSelectedOption,
 }) => {
   const dropdownRef = useRef(null);
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
-  const handleSelected = (option) => {
-    setSelectedOption(option);
-    setIsDropdownOpen(false);
-  };
 
   // Close dropdown outside click
   useEffect(() => {
@@ -82,6 +86,7 @@ const FormInput = ({
       className={`contact__from-div ${textarea ? "contact__form-area" : ""}`}
       ref={dropdownRef}
     >
+      
       <label htmlFor={name} className="contact__form-tag">
         {label}
       </label>
@@ -90,11 +95,11 @@ const FormInput = ({
       {dropdown ? (
         <>
           <div
-            className="contact__dropdown-selected"
+            className="contact__dropdown-selected contact__form-input"
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
             tabIndex={tabIndex}
           >
-            <span>{selectedOption || placeholder}</span>
+            <span>{value || placeholder}</span>
 
             <i
               className={`bx bx-chevron-down contact__dropdown-icon ${
@@ -109,9 +114,13 @@ const FormInput = ({
                 <div
                   key={index}
                   className={`contact__dropdown-item ${
-                    selectedOption === option ? "dropdown__active" : ""
+                    value === option ? "dropdown__active" : ""
                   }`}
-                  onClick={() => handleSelected(option)}
+                  // onClick={() => handleSelected(option)}
+                  onClick={() => {
+                    onChange({ target: { name, value: option } });
+                    setIsDropdownOpen(false);
+                  }}
                 >
                   {option}
                 </div>
@@ -128,6 +137,8 @@ const FormInput = ({
           className="contact__form-input"
           placeholder={placeholder}
           tabIndex={tabIndex}
+          value={value}
+          onChange={onChange}
         ></textarea>
       ) : (
         // Input
@@ -137,8 +148,12 @@ const FormInput = ({
           className="contact__form-input"
           placeholder={placeholder}
           tabIndex={tabIndex}
+          value={value}
+          onChange={onChange}
         />
       )}
+      {/* {error && <p className="error">{error}</p>} */}
+      {error && <span className="contact__form-error">{error}</span>}
     </div>
   );
 };

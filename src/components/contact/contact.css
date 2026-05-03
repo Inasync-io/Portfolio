@@ -107,6 +107,21 @@
   z-index: 10;
 }
 
+.contact__form-error {
+  color: var(--title-color);
+  font-size: var(--small-font-size);
+  position: absolute;
+  bottom: -1.25rem;
+  left: 1.25rem;
+}
+
+.api-error {
+  color: var(--title-color);
+  font-size: var(--small-font-size);
+  margin-top: -1rem;
+  margin-bottom: var(--mb-0-25);
+}
+
 .contact__form-area {
   height: 11rem;
 }

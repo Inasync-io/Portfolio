@@ -1,5 +1,8 @@
 import { useEffect, React } from "react";
 import "./App.css";
+
+import { Toaster } from "react-hot-toast";
+
 import Header from "./components/header/Header";
 import Home from "./components/home/Home";
 import About from "./components/about/About";
@@ -66,6 +69,7 @@ const App = () => {
 
   return (
     <>
+      <Toaster />
       <Header />
 
       <main className="main">

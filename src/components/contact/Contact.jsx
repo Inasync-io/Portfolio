@@ -1,22 +1,130 @@
 import React, { useRef } from "react";
-import emailjs from "@emailjs/browser";
+// import emailjs from "@emailjs/browser";
 import "./contact.css";
 import FormInput from "./FormInput";
+import { ax_contactForm } from "../../api/contactForm";
+import { toast } from "react-hot-toast";
 
 const Contact = () => {
+  const initialFormData = {
+    name: "",
+    email: "",
+    inquiryType: "",
+    requirementDetails: "",
+  };
   const form = useRef();
-  const [selectedOption, setSelectedOption] = React.useState("");
 
-  const sendEmail = (e) => {
+  const [formData, setFormData] = React.useState(initialFormData);
+  const [apiErr, setApiErr] = React.useState(null);
+  const [errors, setErrors] = React.useState({});
+  // const [selectedOption, setSelectedOption] = React.useState("");
+  const [isLoading, setIsLoading] = React.useState(false);
+
+  // const sendEmail = (e) => {
+  //   e.preventDefault();
+
+  //   emailjs.sendForm(
+  //     "service_noz68tb",
+  //     "template_nqzwmck",
+  //     form.current,
+  //     "dkO7JSbdfHOTTwHbJ",
+  //   );
+  //   e.target.reset();
+  // };
+
+  const validateField = (name, value) => {
+    const validators = {
+      name: (value) => {
+        if (!value.trim()) return "Name is required";
+        if (value.trim().length < 3) return "must be at least 3 characters";
+        if (value.trim().length > 50) return "must be less than 50 characters";
+        return null;
+      },
+
+      email: (value) => {
+        if (!value.trim()) return "Email is required";
+        if (!/^[\w.-]+@[\w-]+\.[\w-]{2,4}$/.test(value.trim())) {
+          return "Invalid email format";
+        }
+        return null;
+      },
+
+      inquiryType: (value) => {
+        if (!value.trim()) return "Inquiry type is required";
+        return null;
+      },
+
+      requirementDetails: (value) => {
+        if (!value.trim()) return "Requirement details are required";
+        if (value.trim().length < 10) return "must be at least 10 characters";
+        if (value.trim().length > 1000)
+          return "must be less than 1000 characters";
+        return null;
+      },
+    };
+
+    return validators[name] ? validators[name](value) : null;
+  };
+
+  const validateForm = () => {
+    const newErrors = Object.keys(formData).reduce((acc, field) => {
+      const error = validateField(field, formData[field]);
+      if (error) {
+        acc[field] = error;
+      }
+      return acc;
+    }, {});
+    return newErrors;
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+
+    // live validation (optional but recommended)
+    setErrors((prev) => ({
+      ...prev,
+      [name]: validateField(name, value),
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    console.log('hit submit');
+    
     e.preventDefault();
+    const validationErrors = validateForm();
 
-    emailjs.sendForm(
-      "service_noz68tb",
-      "template_nqzwmck",
-      form.current,
-      "dkO7JSbdfHOTTwHbJ",
-    );
-    e.target.reset();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+
+    setErrors({});
+    setIsLoading(true);
+
+    try {
+      const res = await ax_contactForm(formData);
+      if (res.success) {
+        toast.success("Message sent successfully!");
+
+        setFormData(initialFormData);
+        // setSelectedOption("");
+        setApiErr(null);
+      } else {
+        toast.error(res.message || "Failed to send message.");
+        setApiErr(res.message);
+      }
+    } catch (error) {
+      console.error("Error submitting contact form:", error);
+      toast.error("An error occurred while submitting the form.");
+      setApiErr("An error occurred while submitting the form.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -75,81 +183,62 @@ const Contact = () => {
 
           <form
             ref={form}
-            onSubmit={sendEmail}
+            onSubmit={handleSubmit}
             className="contact__form reveal reveal-right"
           >
-            <div className="contact__from-div">
-              {/* <label htmlFor="name" className="contact__form-tag">
-                Name
-              </label>
-              <input
-                type="text"
-                name="name"
-                className="contact__form-input"
-                placeholder="Insert your name"
-              /> */}
-              <FormInput
-                label="Name"
-                name="name"
-                placeholder="Enter your name"
-                tabIndex={1}
-              />
-            </div>
+            <FormInput
+              label="Name"
+              name="name"
+              placeholder="Enter your name"
+              tabIndex={1}
+              error={errors.name}
+              value={formData.name}
+              onChange={handleChange}
+            />
 
-            <div className="contact__from-div">
-              {/* <label htmlFor="email" className="contact__form-tag">
-                Mail
-              </label>
-              <input
-                type="email"
-                name="email"
-                className="contact__form-input"
-                placeholder="Insert your email"
-              /> */}
-              <FormInput
-                label="Email"
-                type="email"
-                name="email"
-                placeholder="Enter your email"
-                tabIndex={2}
-              />
-            </div>
+            <FormInput
+              label="Email"
+              type="email"
+              name="email"
+              placeholder="Enter your email"
+              tabIndex={2}
+              error={errors.email}
+              value={formData.email}
+              onChange={handleChange}
+            />
 
-            <div className="contact__from-div">
-              <FormInput
-                label="Inquiry Type"
-                dropdown={true}
-                placeholder="Select Inquiry Type"
-                value={selectedOption}
-                onChange={(e) => setSelectedOption(e.target.value)}
-                selectedOption={selectedOption}
-                setSelectedOption={setSelectedOption}
-                tabIndex={3}
-              />
-            </div>
+            <FormInput
+              label="Inquiry Type"
+              name="inquiryType"
+              dropdown={true}
+              placeholder="Select Inquiry Type"
+              value={formData.inquiryType}
+              onChange={handleChange}
+              // selectedOption={selectedOption}
+              // setSelectedOption={setSelectedOption}
+              tabIndex={3}
+              error={errors.inquiryType}
+            />
 
-            <div className="contact__from-div contact__form-area">
-              {/* <label htmlFor="message" className="contact__form-tag">
-                Message
-              </label>
-              <textarea
-                name="message"
-                cols="30"
-                rows="10"
-                className="contact__form-input"
-                placeholder="Write your message"
-              ></textarea> */}
-              <FormInput
-                label="Requirement Details"
-                name="requirement_details"
-                placeholder="Describe your project, goals, or role you're hiring for..."
-                textarea
-                tabIndex={4}
-              />
-            </div>
+            <FormInput
+              label="Requirement Details"
+              name="requirementDetails"
+              placeholder="Describe your project, goals, or role you're hiring for..."
+              textarea
+              tabIndex={4}
+              error={errors.requirementDetails}
+              value={formData.requirementDetails}
+              onChange={handleChange}
+            />
 
-            <button className="button button--flex">
-              Send Message
+            {apiErr && <p className="api-error">{apiErr}</p>}
+            <button
+              className="button button--flex"
+              disabled={isLoading}
+              type="submit"
+            >
+              {/* Send Message */}
+              {isLoading ? "Sending..." : "Send Message"}
               <svg
                 class="button__icon"
                 xmlns="http://www.w3.org/2000/svg"
