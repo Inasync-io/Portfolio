@@ -7,20 +7,20 @@ import Info from "./Info";
 function About() {
   return (
     <section className="about section" id="about">
-      <h2 className="section__title">About Me</h2>
-      <span className="section__subtitle">My introduction</span>
+      <h2 className="section__title reveal">About Me</h2>
+      <span className="section__subtitle reveal">My introduction</span>
 
       <div className="about__container container grid">
-        <img src={AboutImg} alt="" className="about__img" />
+        <img src={AboutImg} alt="" className="about__img reveal reveal-left" />
 
-        <div className="about__data">
-          <Info />
+        <div className="about__data reveal reveal-right">
+          <Info className="reveal"/>
 
-          <p className="about__description">
+          <p className="about__description reveal">
             I’m a MERN Full Stack Developer dedicated to building intuitive and engaging web applications. With 2 years of experience, I’m passionate about delivering high-quality projects with a strong emphasis on UI/UX design. I’m constantly eager to learn new technologies and grow in the field.
           </p>
 
-          <a download="" href={CV} className="button button--flex">
+          <a download="" href={CV} className="button button--flex reveal">
             Download CV
             <svg
               class="button__icon"

@@ -1,4 +1,5 @@
 import React from "react";
+import "./home.css";
 
 const Data = () => {
   return (
@@ -57,10 +58,16 @@ const Data = () => {
       </h1>
       <h3 className="home__subtitle">MERN Stack Developer</h3>
       <p className="home__description">
-      I’m a Full Stack Developer specializing in the MERN stack with 2 years of experience. I focus on building scalable, secure, and responsive web applications.
+        I’m a Full Stack Developer specializing in the MERN stack with 2 years
+        of experience. I focus on building scalable, secure, and responsive web
+        applications.
       </p>
 
-      <a href="#contact" className="button button--flex">
+      <a
+        href="#contact"
+        className="button button--flex reveal once"
+        // style={{ animationDelay: "0.9s" }}
+      >
         Say Hello
         <svg
           class="button__icon"

@@ -5,9 +5,9 @@ const Footer = () => {
   return (
     <footer className="footer" id='footer'>
         <div className="footer__container container">
-           <h1 className="footer__title">Ace</h1>
+           <h1 className="footer__title reveal">Ace</h1>
 
-           <ul className="footer__list">
+           <ul className="footer__list reveal reveal-left">
                 <li>
                     <a href="#about" className="footer__link">About</a>
                 </li>
@@ -29,7 +29,7 @@ const Footer = () => {
                 </li>
            </ul>
 
-           <div className="footer__social">
+           <div className="footer__social reveal">
             <a href="https://x.com/irohitna_" className="footer__social-link" target='_blank' rel="noreferrer">
             <i class="uil uil-twitter"></i>
             </a>
@@ -47,7 +47,7 @@ const Footer = () => {
             </a>
            </div>
 
-           <span className="footer__copy">&#169; Inasync. All rights reserved</span>
+           <span className="footer__copy reveal">&#169; irohitna. All rights reserved</span>
         </div>
     </footer>
   )

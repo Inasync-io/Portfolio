@@ -1,33 +1,34 @@
-import React, { useRef } from 'react';
-import emailjs from '@emailjs/browser';
+import React, { useRef } from "react";
+import emailjs from "@emailjs/browser";
 import "./contact.css";
+import FormInput from "./FormInput";
 
 const Contact = () => {
   const form = useRef();
+  const [selectedOption, setSelectedOption] = React.useState("");
 
   const sendEmail = (e) => {
     e.preventDefault();
 
-    emailjs
-      .sendForm(
-        "service_noz68tb",
-        "template_nqzwmck",
-        form.current,
-        "dkO7JSbdfHOTTwHbJ"
-      )
-      e.target.reset()
+    emailjs.sendForm(
+      "service_noz68tb",
+      "template_nqzwmck",
+      form.current,
+      "dkO7JSbdfHOTTwHbJ",
+    );
+    e.target.reset();
   };
 
   return (
     <section className="contact section" id="contact">
-      <h2 className="section__title">Get in touch</h2>
-      <span className="section__subtitle">Contact Me</span>
+      <h2 className="section__title reveal">Get in touch</h2>
+      <span className="section__subtitle reveal">Contact Me</span>
 
       <div className="contact__container container grid">
         <div className="contact__contact">
-          <h3 className="contact__title">Talk to me</h3>
+          <h3 className="contact__title reveal">Talk to me</h3>
 
-          <div className="contact__info">
+          <div className="contact__info reveal reveal-left">
             <div className="contact__card">
               <i className="bx bx-mail-send contact__card-icon"></i>
 
@@ -70,11 +71,15 @@ const Contact = () => {
         </div>
 
         <div className="contact__content">
-          <h3 className="contact__title">Hire me</h3>
+          <h3 className="contact__title reveal">Hire me</h3>
 
-          <form ref={form} onSubmit={sendEmail} className="contact__form">
+          <form
+            ref={form}
+            onSubmit={sendEmail}
+            className="contact__form reveal reveal-right"
+          >
             <div className="contact__from-div">
-              <label htmlFor="" className="contact__form-tag">
+              {/* <label htmlFor="name" className="contact__form-tag">
                 Name
               </label>
               <input
@@ -82,11 +87,17 @@ const Contact = () => {
                 name="name"
                 className="contact__form-input"
                 placeholder="Insert your name"
+              /> */}
+              <FormInput
+                label="Name"
+                name="name"
+                placeholder="Enter your name"
+                tabIndex={1}
               />
             </div>
 
             <div className="contact__from-div">
-              <label htmlFor="" className="contact__form-tag">
+              {/* <label htmlFor="email" className="contact__form-tag">
                 Mail
               </label>
               <input
@@ -94,11 +105,31 @@ const Contact = () => {
                 name="email"
                 className="contact__form-input"
                 placeholder="Insert your email"
+              /> */}
+              <FormInput
+                label="Email"
+                type="email"
+                name="email"
+                placeholder="Enter your email"
+                tabIndex={2}
+              />
+            </div>
+
+            <div className="contact__from-div">
+              <FormInput
+                label="Inquiry Type"
+                dropdown={true}
+                placeholder="Select Inquiry Type"
+                value={selectedOption}
+                onChange={(e) => setSelectedOption(e.target.value)}
+                selectedOption={selectedOption}
+                setSelectedOption={setSelectedOption}
+                tabIndex={3}
               />
             </div>
 
             <div className="contact__from-div contact__form-area">
-              <label htmlFor="" className="contact__form-tag">
+              {/* <label htmlFor="message" className="contact__form-tag">
                 Message
               </label>
               <textarea
@@ -107,7 +138,14 @@ const Contact = () => {
                 rows="10"
                 className="contact__form-input"
                 placeholder="Write your message"
-              ></textarea>
+              ></textarea> */}
+              <FormInput
+                label="Requirement Details"
+                name="requirement_details"
+                placeholder="Describe your project, goals, or role you're hiring for..."
+                textarea
+                tabIndex={4}
+              />
             </div>
 
             <button className="button button--flex">

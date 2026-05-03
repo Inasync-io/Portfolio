@@ -11,6 +11,37 @@ const Works = () => {
   const [active, setActive] = useState(0);
 
   useEffect(() => {
+  const cards =
+    document.querySelectorAll(".work__card");
+
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add(
+            "work-active"
+          );
+        } else {
+          entry.target.classList.remove(
+            "work-active"
+          );
+        }
+      });
+    },
+    {
+      threshold: 0.25,
+      rootMargin: "0px 0px -80px 0px",
+    }
+  );
+
+  cards.forEach(card =>
+    observer.observe(card)
+  );
+
+  return () => observer.disconnect();
+}, [projects]);
+
+  useEffect(() => {
     if (item.name === "all") {
       setProjects(projectsData);
     } else {
@@ -22,19 +53,20 @@ const Works = () => {
   }, [item]);
 
   const handleClick = (e, index) => {
-    setItem({name: e.target.textContent.toLowerCase() });
+    setItem({ name: e.target.textContent.toLowerCase() });
     setActive(index);
-  }
+  };
+
   return (
     <section>
-      <div className="work__filters">
+      <div className="work__filters reveal">
         {projectsNav.map((item, index) => {
           return (
             <span
               onClick={(e) => {
                 handleClick(e, index);
               }}
-              className={`${active === index ? 'active-work' : ""} work__item`}
+              className={`${active === index ? "active-work" : ""} work__item`}
               key={index}
             >
               {item.name}
