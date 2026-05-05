@@ -16,30 +16,6 @@ import Footer from "./components/footer/Footer";
 import Scrollup from "./components/scrollup/Scrollup";
 
 const App = () => {
-  // useEffect(() => {
-  //   const reveals = document.querySelectorAll(".reveal");
-
-  //   const observer = new IntersectionObserver(
-  //     (entries) => {
-  //       entries.forEach((entry) => {
-  //         if (entry.isIntersecting) {
-  //           // when visible → animate
-  //           entry.target.classList.add("active");
-  //         } else {
-  //           // when out of view → reset
-  //           entry.target.classList.remove("active");
-  //         }
-  //       });
-  //     },
-  //     {
-  //       threshold: 0.2,
-  //     },
-  //   );
-
-  //   reveals.forEach((el) => observer.observe(el));
-
-  //   return () => observer.disconnect();
-  // }, []);
 
   useEffect(() => {
     const reveals = document.querySelectorAll(".reveal");
