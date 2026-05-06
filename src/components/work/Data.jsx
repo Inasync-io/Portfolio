@@ -1,40 +1,45 @@
 import Work1 from "../../assets/work1.jpg";
 import Work2 from "../../assets/work2.jpg";
-import Work3 from "../../assets/work3.jpg";
+// import Work3 from "../../assets/work3.jpg";
 import Work4 from "../../assets/work4.jpg";
 
 export const projectsData = [
   {
     id: 1,
     image: Work1,
-    title: "Warranty Registration System",
+    title: "Whatsapp ChatBot",
     description:
-      "A web-based warranty registration system that allows customers to register their products online and access warranty information easily.",
-    link: "https://warranty-registration-system.onrender.com/",
-    category: "web",
+      "Built a service ticket booking system integrated with a Meta WhatsApp chatbot to automate raising and tracking service requests through real-time conversational flow.",
+    category: "app",
+    caseStudy: false,
+    link: "https://github.com/Inasync-io/wa-chatbot",
   },
   {
     id: 2,
     image: Work2,
-    title: "App movil",
-    category: "app",
-    link: "https://www.behance.net/nrogith",
+    title: "Warranty Registration System",
+    description:
+      "A web-based warranty registration system that allows customers to register their products online and access warranty information easily.",
+    link: "https://www.figma.com/proto/0D6nLBEFAGCTeZNJ13D3MS/Dashboard?node-id=92-842",
+    caseStudy: false,
+    category: "web",
   },
-  {
-    id: 3,
-    image: Work3,
-    title: "Brand design",
-    category: "design",
-    link: "https://www.behance.net/nrogith",
-  },
+  // {
+  //   id: 3,
+  //   image: Work3,
+  //   title: "Brand design",
+  //   category: "design",
+  //   link: "https://www.behance.net/nrogith",
+  // },
   {
     id: 4,
     image: Work4,
-    title: "Service Request Booking System",
+    title: "Service Request Management",
     description:
-      "A web application that enables users to book service requests online, track their status, and manage appointments efficiently.",
+      "Designed and developed an admin dashboard to verify service issues and efficiently assign requests to nearby mechanics for faster resolution.",
     category: "web",
-    link: "https://syxchub.github.io/QR-Code/",
+    caseStudy: false,
+    link: "https://github.com/Inasync-io/fsm-dashboard",
   },
 ];
 

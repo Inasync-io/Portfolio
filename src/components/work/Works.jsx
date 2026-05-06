@@ -1,45 +1,39 @@
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
-import { projectsData } from "./Data";
-import { projectsNav } from "./Data";
+import React, { useEffect, useState, useRef } from "react";
+import { projectsData, projectsNav } from "./Data";
 import WorkItems from "./WorkItems";
 
 const Works = () => {
   const [item, setItem] = useState({ name: "all" });
   const [projects, setProjects] = useState([]);
   const [active, setActive] = useState(0);
+  const containerRef = useRef(null);
 
   useEffect(() => {
-  const cards =
-    document.querySelectorAll(".work__card");
+    if (!containerRef.current) return;
 
-  const observer = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add(
-            "work-active"
-          );
-        } else {
-          entry.target.classList.remove(
-            "work-active"
-          );
-        }
-      });
-    },
-    {
-      threshold: 0.25,
-      rootMargin: "0px 0px -80px 0px",
-    }
-  );
+    const cards = document.querySelectorAll(".work__card");
+    if (cards.length === 0) return;
 
-  cards.forEach(card =>
-    observer.observe(card)
-  );
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("work-active");
+          } else {
+            entry.target.classList.remove("work-active");
+          }
+        });
+      },
+      {
+        threshold: 0.25,
+        rootMargin: "0px 0px -80px 0px",
+      },
+    );
 
-  return () => observer.disconnect();
-}, [projects]);
+    cards.forEach((card) => observer.observe(card));
+
+    return () => observer.disconnect();
+  }, [projects]);
 
   useEffect(() => {
     if (item.name === "all") {
@@ -75,7 +69,7 @@ const Works = () => {
         })}
       </div>
 
-      <div className="work__container container grid">
+      <div className="work__container container grid" ref={containerRef}>
         {projects.map((item) => {
           return <WorkItems item={item} key={item.id} />;
         })}

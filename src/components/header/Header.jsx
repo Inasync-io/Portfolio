@@ -1,15 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Header.css";
 
 const Header = () => {
   // ========== Change background Header ==========
-  window.addEventListener("scroll", function () {
-    const header = document.querySelector(".header");
-    // when the scroll is higher than 560 viewport height,
-    // add the show-scroll class to a tag width the scroll-top class
-    if (this.scrollY >= 80) header.classList.add("scroll-header");
-    else header.classList.remove("scroll-header");
-  });
+  // window.addEventListener("scroll", function () {
+  //   const header = document.querySelector(".header");
+  //   // when the scroll is higher than 560 viewport height,
+  //   // add the show-scroll class to a tag width the scroll-top class
+  //   if (this.scrollY >= 80) header.classList.add("scroll-header");
+  //   else header.classList.remove("scroll-header");
+  // });
+
+  useEffect(() => {
+    const scrollHeader = () => {
+      const header = document.querySelector(".header");
+      if (!header) return; // ✅ stops if header not on this page
+
+      if (window.scrollY >= 80) header.classList.add("scroll-header");
+      else header.classList.remove("scroll-header");
+    };
+
+    window.addEventListener("scroll", scrollHeader);
+    return () => window.removeEventListener("scroll", scrollHeader); // ✅ cleanup
+  }, []);
 
   // ========== Toggle Menu ==========
   const [Toggle, showMenu] = useState(false);
@@ -61,10 +74,15 @@ const Header = () => {
               </a>
             </li>
             <li className="nav__item">
-              <a href="#services" onClick={() => setActiveNav("#services")}
+              <a
+                href="#services"
+                onClick={() => setActiveNav("#services")}
                 className={
-                  activeNav === "#services" ? "nav__link active-link" : "nav__link"
-                }>
+                  activeNav === "#services"
+                    ? "nav__link active-link"
+                    : "nav__link"
+                }
+              >
                 <i className="uil uil-briefcase-alt nav__icon"></i>
                 Services
               </a>
@@ -80,7 +98,7 @@ const Header = () => {
                 }
               >
                 <i className="uil uil-scenery nav__icon"></i>
-                Portfolio
+                Projects
               </a>
             </li>
             <li className="nav__item">

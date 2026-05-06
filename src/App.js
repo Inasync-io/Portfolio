@@ -1,6 +1,8 @@
 import { useEffect, React } from "react";
 import "./App.css";
 
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import { Toaster } from "react-hot-toast";
 
 import Header from "./components/header/Header";
@@ -15,8 +17,9 @@ import Contact from "./components/contact/Contact";
 import Footer from "./components/footer/Footer";
 import Scrollup from "./components/scrollup/Scrollup";
 
-const App = () => {
+import CaseStudy from "./components/work/pages/CaseStudy";
 
+const MainHome = () => {
   useEffect(() => {
     const reveals = document.querySelectorAll(".reveal");
 
@@ -61,6 +64,18 @@ const App = () => {
         <Scrollup />
       </main>
     </>
+  );
+};
+
+const App = () => {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<MainHome />} />
+
+        <Route path="case-study" element={<CaseStudy />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 

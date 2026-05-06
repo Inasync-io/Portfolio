@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const WorkItems = ({ item }) => {
   return (
@@ -7,10 +8,13 @@ const WorkItems = ({ item }) => {
       <div className="work__data">
         <h3 className="work__title">{item.title}</h3>
         <p className="description">{item.description}</p>
-        <a href={item.link} className="work__button">
-          Source Code{" "}
+        <Link
+          to={item.link}
+          className="work__button"
+        >
+          {item.caseStudy ? "Case Study" : "Source Code"}
           <i className="bx bx-right-arrow-alt work__button-icon"></i>
-        </a>
+        </Link>
       </div>
     </div>
   );
